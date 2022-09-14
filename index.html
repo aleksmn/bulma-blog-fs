@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Page App</title>
+  <link rel="stylesheet" href="/static/css/bulmaswatch.min.css">
+  <script type="module" src="/static/js/app.js" defer></script>
+
+</head>
+
+<body>
+  <!-- <nav class="nav">
+    <a href="/" class="nav__link" data-link>Главная</a>
+    <a href="/posts" class="nav__link" data-link>Блог</a>
+    <a href="/contacts" class="nav__link" data-link>Контакты</a>
+  </nav> -->
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="">
+          <span class="subtitle has-text-light has-text-weight-bold">aleksmn</span>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbar" class="navbar-menu">
+        <!-- <div class="navbar-start">
+          </div> -->
+
+        <div class="navbar-end">
+          <a href="/" class="navbar-item" data-link>
+            Home
+          </a>
+
+          <a href="/posts" class="navbar-item" data-link>
+            Blog
+          </a>
+
+          <a href="/contacts" class="navbar-item" data-link>
+            Contacts
+          </a>
+
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="section">
+    <div class="container content" id="app"></div>
+
+
+  </div>
+
+  <script>
+    // Открытие навигации
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Add a click event on each of them
+      $navbarBurgers.forEach(el => {
+        el.addEventListener('click', () => {
+
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+
+        });
+      });
+
+    });
+  </script>
+
+</body>
+
+
+</html>
