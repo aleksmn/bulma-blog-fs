@@ -7,18 +7,31 @@ const pathToRegex = (path) =>
   RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
 const getParams = (match) => {
-  // Получаем параметр из пути в адресной строке(posts/7 --> 7)
-  const values = match.result.slice(1);
-  // Получаем ключ значения (posts/:id ---> id)
-  const keys = Array.from(match.route.path.matchAll(/:(\w+)/g)).map(
-    (result) => result[1]
-  );
+
+  console.log(match)
+  const value = match.result.slice(1)[0]
+  const key = match.route.path.split(":")[1]
+
+  console.log(key, value)
+
+  const paramObj = {};
+  paramObj[key] = value
+
+  // ///  Example to return --> {id: '1'}
+  return paramObj
+
+  // // // Получаем параметр из пути в адресной строке(posts/7 --> 7)
+  // const values = match.result.slice(1);
+  // // //  Получаем ключ значения (posts/:id ---> id)
+  // const keys = Array.from(match.route.path.matchAll(/:(\w+)/g)).map(
+  //   (result) => result[1]
+  // );
 
   // console.log(Array.from(match.route.path.matchAll(/:(\w+)/g)));
 
-  return Object.fromEntries(keys.map((key, i) => {
-    return [key, values[i]];
-  }));
+  // return Object.fromEntries(keys.map((key, i) => {
+  //   return [key, values[i]];
+  // }));
 
 };
 
@@ -48,6 +61,8 @@ const router = async () => {
 
   let match = potentialMatches.find((match) => match.result !== null);
 
+
+
   if (!match) {
     match = {
       route: routes[0],
@@ -60,6 +75,8 @@ const router = async () => {
   // console.log(match);
 
   const view = new match.route.view(getParams(match));
+
+  console.log(getParams(match))
 
   document.querySelector("#app").innerHTML = await view.getHtml();
 
