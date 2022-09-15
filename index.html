@@ -37,15 +37,15 @@
 
         <div class="navbar-end">
           <a href="/" class="navbar-item" data-link>
-            Home
+            Главная
           </a>
 
           <a href="/posts" class="navbar-item" data-link>
-            Blog
+            Блог
           </a>
 
           <a href="/contacts" class="navbar-item" data-link>
-            Contacts
+            Контакты
           </a>
 
 
@@ -64,20 +64,20 @@
     // Открытие навигации
     document.addEventListener('DOMContentLoaded', () => {
 
-      // Get all "navbar-burger" elements
-      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      // Выбираем все элементы "navbar-burger"
+      const navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-      // Add a click event on each of them
-      $navbarBurgers.forEach(el => {
+      // Добвляем событие по клику на каждый из этих элементов
+      navbarBurgers.forEach(el => {
         el.addEventListener('click', () => {
 
-          // Get the target from the "data-target" attribute
+          // Выбираем target из атрибута  "data-target"
           const target = el.dataset.target;
-          const $target = document.getElementById(target);
+          const targetElement = document.getElementById(target);
 
-          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          // Переключаем класс "is-active" на "navbar-burger" и "navbar-menu"
           el.classList.toggle('is-active');
-          $target.classList.toggle('is-active');
+          targetElement.classList.toggle('is-active');
 
         });
       });
