@@ -94,7 +94,6 @@ const markNav = currPath => {
   try {
     document.querySelector(`[href="${currPath}"]`).classList.add("active");
   } catch (error) {
-    document.querySelector(`[href="/posts"]`).classList.add("active");
+    // console.log("элемент навигации для выделения не найден")
   }
-
 }
